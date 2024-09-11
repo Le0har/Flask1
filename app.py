@@ -1,4 +1,5 @@
 from flask import Flask
+import random
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -61,6 +62,14 @@ def get_quotes_count():
     count_quotes = len(quotes) 
     data_count = {'count': count_quotes}
     return data_count
+
+
+@app.route('/quotes/random')
+def get_quotes_random():
+    size_quotes = len(quotes)
+    lst = list(range(0, size_quotes))
+    random_number = random.choice(lst)
+    return quotes[random_number]['text']
 
 
 if __name__ == '__main__':
