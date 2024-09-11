@@ -56,6 +56,13 @@ def get_quotes_id(quote_id):
     return f'Цитаты с номером {quote_id} нету!!!', 404
 
 
+@app.route('/quotes/count')
+def get_quotes_count():
+    count_quotes = len(quotes) 
+    data_count = {'count': count_quotes}
+    return data_count
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
