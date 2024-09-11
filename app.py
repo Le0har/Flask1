@@ -48,6 +48,14 @@ def get_quotes():
     return quotes
 
 
+@app.route('/quotes/<int:quote_id>')
+def get_quotes_id(quote_id):
+    for element in quotes:
+        if element['id'] == quote_id:
+            return element['text']
+    return f'Цитаты с номером {quote_id} нету!!!', 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
